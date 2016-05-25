@@ -44,6 +44,15 @@ We are aware of the following widespread implementations written in a
 language other than \commonlisp{}:
 
 \begin{itemize}
+\item \ecl{} uses a \clanguage{} compiler as its main backend.  The
+  code generated from the \ecl{} compiler is \clanguage{} code which
+  is then compiled to native code by that \clanguage{} compiler.  This
+  technique makes it possible to generate reasonably fast code, while
+  letting the \clanguage{} compiler be the only place where knowledge
+  about the native machine code is encoded.  Furthermore, \ecl{} is
+  designed to interoperate with \clanguage{} in that it uses the
+  conventions of \clanguage{}, in particular the \clanguage{} calling
+  conventions.  \ecl{} is also largely written in \clanguage{}.
 \item \clasp{} is a relatively new implementation of \commonlisp{} and
   of somewhat unusual origin.  The main purpose of \clasp{} is to
   allow a nearly seamless interoperation with modules written in
