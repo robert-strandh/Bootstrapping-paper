@@ -48,5 +48,11 @@ language other than \commonlisp{}:
   of somewhat unusual origin.  The main purpose of \clasp{} is to
   allow a nearly seamless interoperation with modules written in
   \cplusplus{}, mainly to allow the use of the CANDO system from
-  \commonlisp{}.
+  \commonlisp{}.  This interoperation is possible due to the fact that
+  LLVM is used as a backend, both for the \cplusplus{} code and for
+  the \commonlisp{} code.  The author of \clasp{} cites this
+  interoperation as the main reason why the system is written in
+  \cplusplus{}.  The origin of the \cplusplus{} code is that the
+  author manually translated the \clanguage{} code of the \ecl{}
+  \commonlisp{} implementation to \cplusplus{}.
 \end{itemize}
