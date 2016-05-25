@@ -56,3 +56,26 @@ language other than \commonlisp{}:
   author manually translated the \clanguage{} code of the \ecl{}
   \commonlisp{} implementation to \cplusplus{}.
 \end{itemize}
+
+We have identified several different reasons why so many \commonlisp{}
+implementations are written in some other language:
+
+\begin{itemize}
+\item At a time when no complete high-quality \commonlisp{} system
+  existed, using a different language for the implementation was a
+  necessity.  Several existing implementations originated at that
+  time, and using \commonlisp{} instead of some other language would
+  amount to a complete rewrite, the result of which would be a
+  different system.
+\item Determining the inner works of a new \commonlisp{} system
+  requires decisions about low-level details of object
+  representation.  Such representation requires a notation that can
+  express these details.  In a \commonlisp{} system written entirely
+  in \commonlisp{} these decisions would be part of the code generator
+  of the compiler.  However, it seems more immediate to many people to
+  encode these decisions more directly in a low-level language such as
+  \clanguage{}.
+\item Even though there is a long history of writing the language
+  processor for a particular language in that very language, this
+  possibility remains obscure to many implementers.
+\end{itemize}
