@@ -45,6 +45,20 @@ usually that, in order to write a \commonlisp{} system, one has to use
 some programming language considered lower level than \commonlisp{}
 itself.  Typically, \clanguage{} plays this role.
 
+But choosing a language such as \clanguage{} for implementing
+\commonlisp{} have many negative consequences.  The most immediate
+consequence is of course that it is much harder to express the
+semantics of \commonlisp{} in a language without the tools that we are
+quite attached to, such as automatic memory management, first-class
+functions, list processing, and (in particular) \clos{}.  Worse, even
+though a large part of the system can be written in \commonlisp{},
+because of the gradual bootstrapping process, many modules of the
+final system must be written in a \emph{subset} of \commonlisp{}.  A
+common such case occurs when the design of the final system is such
+that \clos{} is added towards the end of the bootstrapping process,
+thereby making it impossible to use one of the most powerful tools
+available to the programmer for most of the system code.
+
 In this paper, we argue that one of the main reasons of the creator(s)
 for wanting a target \commonlisp{} system in the first place is
 typically that they are convinced of the virtues of this language for
