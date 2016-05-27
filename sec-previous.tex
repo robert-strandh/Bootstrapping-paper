@@ -44,6 +44,11 @@ We are aware of the following widespread implementations written in a
 language other than \commonlisp{}:
 
 \begin{itemize}
+\item CLISP is written in \clanguage{}, and uses the macro facility of
+  \clanguage{} to create a domain-specific language that turns
+  \clanguage{} into something slightly better adapted to writing a
+  \commonlisp{} system.  The CLISP generates \emph{bytecodes} that are
+  subsequently interpreted by code written in \clanguage{}.
 \item \ecl{} uses a \clanguage{} compiler as its main backend.  The
   code generated from the \ecl{} compiler is \clanguage{} code which
   is then compiled to native code by that \clanguage{} compiler.  This
