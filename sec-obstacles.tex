@@ -34,3 +34,20 @@ names for information about the target environment.  These packages
 are ultimately renamed when the resulting code is incorporated into
 the native target system.  The technique of package renaming is
 heavily used by SBCL.
+
+\subsection{Floating-point arithmetic at compile time}
+
+Any good compiler contains code for doing \emph{constant folding}.
+This optimization technique involves evaluating expressions in which
+the arguments are known to be constant, and when the arguments are
+floating-point numbers, it is important to make sure to use the
+semantics defined by the target \commonlisp{} system of these
+operations.  It is not possible to use the analogous operations in the
+host because the \commonlisp{} standard allows for
+implementation-specific variations such as the number of different
+floating-point types, and the precision of those types.
+
+If these operations are desirable, then the compiler must contain a
+complete set of operations that emulate the desired target semantics.
+However, it can be argued that such optimizations can be deferred
+until the native system is able to compile its own code.
