@@ -35,6 +35,19 @@ are ultimately renamed when the resulting code is incorporated into
 the native target system.  The technique of package renaming is
 heavily used by SBCL.
 
+\subsection{Compile-time evaluation}
+
+The \commonlisp{} compilation model essentially assumes that
+the compiler is native.  For example, the presence of an
+\texttt{eval-when} form with a situation of \texttt{:compile-toplevel}
+requires the body of the form to be evaluated at compile time.
+
+But when the compiler runs as a cross compiler, the body of the
+\texttt{eval-when} is not necessarily meaningful in terms of the
+semantics of the host \commonlisp{} system.  It can be argued that,
+for compile-time evaluation to work in the cross compiler, the host
+system needs to contain a complete copy of the target evaluator.
+
 \subsection{Floating-point arithmetic at compile time}
 
 Any good compiler contains code for doing \emph{constant folding}.
