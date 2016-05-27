@@ -1,0 +1,36 @@
+\section{Obstacles}
+
+There are several obstacles to bootstrapping a target \commonlisp{}
+system on a host \commonlisp{} system.
+
+\subsection{File compiler}
+
+While writing an optimizing compiler for \commonlisp{} is no easy
+task, the way a \emph{file compiler} operates is fairly simple, in
+that it reads a file containing source code and writes a file
+containing code with the equivalent semantics but in some other form,
+typically native machine code.
+
+Clearly, for reasons of maintenance, it is desirable for all compilers
+to share the same source code, whether it be the native in-memory
+compiler, the native file compiler, or the \emph{cross compiler},
+i.e., the compiler running in the host \commonlisp{} system but
+producing output for the target system.  In particular, all compilers
+must access the \emph{global environment} for information such as
+macro expanders, definitions of types, values of constants, etc.
+
+The native compilers would typically access such environment
+information using standard functions such as \texttt{macro-function},
+\texttt{symbol-value}, etc.%
+\footnote{Some such information is not available as standard
+  functions.  For example, there is no standardized way of obtaining
+  the expansion of a given type definition.}
+However, this technique is not possible to use in the cross compiler,
+because it would then obtain information about the host \commonlisp{}
+system rather about the target \commonlisp{} system.
+
+One way of avoiding this conundrum is to use packages with different
+names for information about the target environment.  These packages
+are ultimately renamed when the resulting code is incorporated into
+the native target system.  The technique of package renaming is
+heavily used by SBCL.
